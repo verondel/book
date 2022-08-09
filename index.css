@@ -1,0 +1,58 @@
+body {
+    font-family: sans-serif;
+}
+/* body {
+    font: italic bold 18px/1.2 "Helvetica", "Arial", sans-sherif;
+} */
+
+h1 {
+    color: #2f4f2f;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.title {
+    font: 32px Helvetica, Arial, sans-serif;
+}
+
+.nav li {
+    display: inline-block;
+}
+
+.nav a {
+    color: white;
+    background-color: #13a4a4;
+    padding: 15px 10px 0 5px;
+    padding: 5px;
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+nav .featured { /* с исходным порядком можно a.featured */  
+    background-color: orange;
+    box-shadow: 10px 2px #6f9090;
+}
+
+a:link {
+    color: aquamarine;
+    text-decoration: none;
+}
+
+.footer {
+    color: #666;
+    background-color: #ccc;
+    padding: 15px 0; /* 14 сверху и снизу, бока 0 */
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer a {
+    color: initial;
+    text-decoration: underline;
+}
+
+.padded {
+    font-size: 16px;
+    padding: 1em;
+}
+
