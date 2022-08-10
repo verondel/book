@@ -3,9 +3,7 @@
     font-size: calc(0.5em + 1vw); /* 1% от видемого поля*/
 }
 
-* ,
-::before,
-::after {
+* , ::before, ::after {
     box-sizing: inherit;
 }
 
@@ -13,7 +11,6 @@
     padding: 0;
     margin: 0;
     border: 0;
-    
 }
 
 body {
@@ -39,7 +36,6 @@ body {
 .container {
     display: flex; /*<display-inside> value*/
 
-
     font-size: 1rem; 
     padding: 1em;
     border-radius: 0.5em; 
@@ -55,7 +51,7 @@ body {
     align-items: center;
     align-content: center;
     justify-content: center;
-    overflow: auto;
+    overflow: auto; /* прокрутка */
 }
 
 .button_block {
@@ -64,6 +60,7 @@ body {
 
 button { 
     background-color: blueviolet;
-    margin: 2vh 0 30vh 0;
-    width: 6em;
+    margin: 2vh 0 30vh 0; /* отступ от select */
+    width: 6em; /* размер области кнопки*/
+    position: relative; left: 10.75em; /* подвинуть кнопку вправо*/
 }
