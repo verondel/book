@@ -15,12 +15,13 @@ html,body{
     font-size:14px;
     -ms-text-size-adjust:100%;
     -moz-text-size-adjust:100%;
-    -webkit-text-size-adjust:100%;}
+    -webkit-text-size-adjust:100%;
+}
 
 input,button,textarea{font-family:inherit;}
 input::-ms-clear{display: none;} /* убирает крестик в textarea после ввода данных*/
 button{cursor: pointer;}
-button::-moz-focus-inner {padding:0;border:0;}
+button::-moz-focus-inner {padding:0;border:0;} /* убирает лишние отступы для использования в разных браузерах*/
 a,a:visited{text-decoration: none;}
 a:hover{text-decoration: none;}
 ul li{list-style: none;}
