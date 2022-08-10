@@ -58,6 +58,12 @@ body {
     overflow: auto;
 }
 
-.form * .form {
+.button_block {
+    /* text-align: left; */
+}
 
+button { 
+    background-color: blueviolet;
+    margin: 2vh 0 30vh 0;
+    width: 6em;
 }
