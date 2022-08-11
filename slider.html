@@ -44,26 +44,29 @@
         let select_2_has_already_been_selected = 0; // переменная-индикатор, были ли уже добавлены option во второй select. Нет = 0, да = 1 
 
         // основная функция
-        // function show_second_select(value) {
-        //     document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
-        //     let selected_type_of_meeting = [];
-        //     switch (value) {
-        //         case '1': selected_type_of_meeting = projects; break;
-        //         case '2': selected_type_of_meeting = events; break;
-        //         case '3': selected_type_of_meeting = communities; break;
-        //         case '4': selected_type_of_meeting = personal; break;
-        //     }
-        //     // console.log("sel = ", selected_type_of_meeting);
-        //     let counter = selected_type_of_meeting.length; // cчётчик длины массива
-        //     while (0 != counter){ // по итогу этого while в select появятся все элементы массива
-        //         let optionLast = document.createElement('option'); // вписать в html у второго select новый <option></..>
-        //         optionLast.setAttribute('value', selected_type_of_meeting[counter-1]); // value каждого option равен названию элемента массива
-        //         optionLast.innerHTML = projects[counter-1]; // внутри нового option написать название эл.массива. Минус 1, т.к. нумерация в массиве с 0 элемента
-        //     //             select_2.append(optionLast); // нашли по id нужный select, перед </select> вставили "<option> Project[0] </option>
-        //     //             counter--;
-                
-                
-        // }
+        function show_second_select(value) {
+            document.getElementById('select_2').removeAttribute('disabled'); // включаем второй select, т.е. удали атрибут disabled
+            
+            // определяем какой массив нужно подгрузить для пользователя
+            let selected_type_of_meeting = [];
+            switch (value) {
+                case '1': selected_type_of_meeting = projects; break;
+                case '2': selected_type_of_meeting = events; break;
+                case '3': selected_type_of_meeting = communities; break;
+                case '4': selected_type_of_meeting = personal; break;
+            }
+            // console.log("sel = ", selected_type_of_meeting);
+
+            // добавляем во второй select необходимый ему массив
+            let counter = selected_type_of_meeting.length; // cчётчик длины массива
+            while (0 != counter){ // по итогу этого while в select появятся все элементы массива
+                let optionLast = document.createElement('option'); // вписать в html у второго select новый <option></..>
+                optionLast.setAttribute('value', selected_type_of_meeting[counter-1]); // value каждого option равен названию элемента массива
+                optionLast.innerHTML = selected_type_of_meeting[counter-1]; // внутри нового option написать название эл.массива. Минус 1, т.к. нумерация в массиве с 0 элемента
+                select_2.append(optionLast); // нашли по id нужный select, перед </select> вставили "<option> Project[0] </option>
+                counter--;
+            }
+        }
 
 
 
@@ -73,37 +76,37 @@
             let select_type = select_click.value; //  запиши value этого option в select_type
             console.log(select_type);
 
-            //show_second_select(select_type);
+            show_second_select(select_type);
 
 
             
 
-            switch (select_type) { 
-                case '1': // если value == 1 (выбрали встречу по проекту), то
-                    document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
-                    counter = projects.length; // счётчик для количества проектов
+            // switch (select_type) { 
+            //     case '1': // если value == 1 (выбрали встречу по проекту), то
+            //         document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
+            //         counter = projects.length; // счётчик для количества проектов
                     
-                    while (0 != counter){ // по итогу этого while в select появятся все проекты
-                        let optionLast = document.createElement('option');   // вписать в html у второго select новый <option></..>
-                        optionLast.setAttribute('value', projects[counter-1]); // value каждого option равен названию проекта
-                        optionLast.innerHTML = projects[counter-1]; // внутри нового option написать название проекта из массива проектов. Минус 1, т.к. нумерация в массиве с 0 элемента
-                        select_2.append(optionLast); // нашли по id нужный select, перед </select> вставили "<option> Project[0] </option>
-                        counter--;
-                        // console.log(document.getElementById('select_2')); // проверка 
-                    }
-                    break;
-                case '2':
-                    document.getElementById('select_2').removeAttribute('disabled');
-                    counter = event.length; 
-                    while (0 != counter){
-                        let optionLast = document.createElement('option')
-                        optionLast.setAttribute('value', event[counter-1]);
-                        optionLast.innerHTML = event[counter-1]; 
-                        select_2.append(optionLast);
-                        counter--;
-                    }
-            }
-                counter = selected_type_of_meeting.length; // счётчик для количества 
+            //         while (0 != counter){ // по итогу этого while в select появятся все проекты
+            //             let optionLast = document.createElement('option');   // вписать в html у второго select новый <option></..>
+            //             optionLast.setAttribute('value', projects[counter-1]); // value каждого option равен названию проекта
+            //             optionLast.innerHTML = projects[counter-1]; // внутри нового option написать название проекта из массива проектов. Минус 1, т.к. нумерация в массиве с 0 элемента
+            //             select_2.append(optionLast); // нашли по id нужный select, перед </select> вставили "<option> Project[0] </option>
+            //             counter--;
+            //             // console.log(document.getElementById('select_2')); // проверка 
+            //         }
+            //         break;
+            //     case '2':
+            //         document.getElementById('select_2').removeAttribute('disabled');
+            //         counter = event.length; 
+            //         while (0 != counter){
+            //             let optionLast = document.createElement('option')
+            //             optionLast.setAttribute('value', event[counter-1]);
+            //             optionLast.innerHTML = event[counter-1]; 
+            //             select_2.append(optionLast);
+            //             counter--;
+            //         }
+            // }
+            //     counter = selected_type_of_meeting.length; // счётчик для количества 
         });
 
 
