@@ -43,9 +43,10 @@
         let personal = ["person_1", "person_2", "person_3"]; // список возможных людей для личных встреч
         let select_2_has_already_been_selected = 0; // переменная-индикатор, были ли уже добавлены option во второй select. Нет = 0, да = 1 
 
+
         // основная функция
         function show_second_select(value) {
-            document.getElementById('select_2').removeAttribute('disabled'); // включаем второй select, т.е. удали атрибут disabled
+            document.getElementById('select_2').removeAttribute('disabled'); // включаем второй select, т.е. удаляем атрибут disabled
             
             // определяем какой массив нужно подгрузить для пользователя
             let selected_type_of_meeting = [];
@@ -74,12 +75,20 @@
         const select_click = document.querySelector('select'); // нашли первый select
         select_click.addEventListener('change', () => { // eсли кто-то выбрал option в первом select,то
             let select_type = select_click.value; //  запиши value этого option в select_type
-            console.log(select_type);
+            // console.log(select_type);
 
-            show_second_select(select_type);
+            if (select_2_has_already_been_selected === 0){ // это первый запуск?
+                show_second_select(select_type); //да, поэтому запуск основной функции
+                select_2_has_already_been_selected = 1;
+            }else{ // нет, надо отчистить то, что осталось после выбора другого значения в первом select
+                console.log('not first');
+                let del_parent = document.getElementById('select_2');
+                while (del_parent.firstChild){
+                    del_parent.removeChild(del_parent.firstChild);
+                }
+                show_second_select(select_type);
+            }
 
-
-            
 
             // switch (select_type) { 
             //     case '1': // если value == 1 (выбрали встречу по проекту), то
