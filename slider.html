@@ -38,17 +38,33 @@
     <script>
         // Cписки возможных option для второго select, которые подгружаются в зависимости от выбора в первом select
         let projects = ["project_1", "project_2", "project_3"]; // список всех проектов
-        let event = ["event_1", "event_2", "event_3"]; // спиок всех мероприятий
-        let community = ["community_1", "community_2", "community_3"]; // список всех сообществ
+        let events = ["event_1", "event_2", "event_3"]; // спиок всех мероприятий
+        let communities = ["community_1", "community_2", "community_3"]; // список всех сообществ
         let personal = ["person_1", "person_2", "person_3"]; // список возможных людей для личных встреч
+        let select_2_has_already_been_selected = 0; // переменная-индикатор, были ли уже добавлены option во второй select. Нет = 0, да = 1 
 
         // основная функция
-        function show_second_select(value) {
-            document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
-            switch (value) {
-                case 1: selected_type_of_meeting = projects;
-        //.........................................................
-            }
+        // function show_second_select(value) {
+        //     document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
+        //     let selected_type_of_meeting = [];
+        //     switch (value) {
+        //         case '1': selected_type_of_meeting = projects; break;
+        //         case '2': selected_type_of_meeting = events; break;
+        //         case '3': selected_type_of_meeting = communities; break;
+        //         case '4': selected_type_of_meeting = personal; break;
+        //     }
+        //     // console.log("sel = ", selected_type_of_meeting);
+        //     let counter = selected_type_of_meeting.length; // cчётчик длины массива
+        //     while (0 != counter){ // по итогу этого while в select появятся все элементы массива
+        //         let optionLast = document.createElement('option'); // вписать в html у второго select новый <option></..>
+        //         optionLast.setAttribute('value', selected_type_of_meeting[counter-1]); // value каждого option равен названию элемента массива
+        //         optionLast.innerHTML = projects[counter-1]; // внутри нового option написать название эл.массива. Минус 1, т.к. нумерация в массиве с 0 элемента
+        //     //             select_2.append(optionLast); // нашли по id нужный select, перед </select> вставили "<option> Project[0] </option>
+        //     //             counter--;
+                
+                
+        // }
+
 
 
 
@@ -57,13 +73,18 @@
             let select_type = select_click.value; //  запиши value этого option в select_type
             console.log(select_type);
 
+            //show_second_select(select_type);
+
+
+            
+
             switch (select_type) { 
                 case '1': // если value == 1 (выбрали встречу по проекту), то
                     document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
                     counter = projects.length; // счётчик для количества проектов
                     
                     while (0 != counter){ // по итогу этого while в select появятся все проекты
-                        let optionLast = document.createElement('option');   // вписать в html второго select новый <option></..>
+                        let optionLast = document.createElement('option');   // вписать в html у второго select новый <option></..>
                         optionLast.setAttribute('value', projects[counter-1]); // value каждого option равен названию проекта
                         optionLast.innerHTML = projects[counter-1]; // внутри нового option написать название проекта из массива проектов. Минус 1, т.к. нумерация в массиве с 0 элемента
                         select_2.append(optionLast); // нашли по id нужный select, перед </select> вставили "<option> Project[0] </option>
@@ -82,7 +103,7 @@
                         counter--;
                     }
             }
-            //     counter = selected_type_of_meeting.length; // счётчик для количества 
+                counter = selected_type_of_meeting.length; // счётчик для количества 
         });
 
 
