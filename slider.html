@@ -25,9 +25,6 @@
                     <select id="select_2" disabled tabindex="2" name="more_detailes">
                         <option value="" selected disabled hidden> Проект/мероприятие/встреча </option>
                         <option value="5"> Тест </option>
-                        <option value="6"> Тест 2 </option>
-                        <option value="7"> Тест 3 </option>
-                        <option value="8"> Тест 4 </option>
                     </select>
                     <div class="button_block">
                         <button tabindex="3" type="submit"> Отправить </button>
@@ -39,22 +36,53 @@
     </div>
     
     <script>
-        const select_click = document.querySelector('select'); // нашли весь select
-        select_click.addEventListener('change', () => { // eсли кто-то выбрал option,то
-            let select_type = select_click.value; //  запиши его value в select_type
-            if (select_type === '1') { // если value == 1, то
-                document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
-                
-                let projects = ["project_1", "project_2",]; // список всех проектов
-                console.log(projects.length);
-                
-                let optionLast = document.createElement('option'); // вписать в html второго select новый <option></..>
-                optionLast.innerHTML = projects[0]; // внутри нового option написать название проекта из массива проектов
-                select_2.append(optionLast); // нашли по id
+        // Cписки возможных option для второго select, которые подгружаются в зависимости от выбора в первом select
+        let projects = ["project_1", "project_2", "project_3"]; // список всех проектов
+        let event = ["event_1", "event_2", "event_3"]; // спиок всех мероприятий
+        let community = ["community_1", "community_2", "community_3"]; // список всех сообществ
+        let personal = ["person_1", "person_2", "person_3"]; // список возможных людей для личных встреч
 
-
+        // основная функция
+        function show_second_select(value) {
+            document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
+            switch (value) {
+                case 1: selected_type_of_meeting = projects;
+        //.........................................................
             }
 
+
+
+        const select_click = document.querySelector('select'); // нашли первый select
+        select_click.addEventListener('change', () => { // eсли кто-то выбрал option в первом select,то
+            let select_type = select_click.value; //  запиши value этого option в select_type
+            console.log(select_type);
+
+            switch (select_type) { 
+                case '1': // если value == 1 (выбрали встречу по проекту), то
+                    document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
+                    counter = projects.length; // счётчик для количества проектов
+                    
+                    while (0 != counter){ // по итогу этого while в select появятся все проекты
+                        let optionLast = document.createElement('option');   // вписать в html второго select новый <option></..>
+                        optionLast.setAttribute('value', projects[counter-1]); // value каждого option равен названию проекта
+                        optionLast.innerHTML = projects[counter-1]; // внутри нового option написать название проекта из массива проектов. Минус 1, т.к. нумерация в массиве с 0 элемента
+                        select_2.append(optionLast); // нашли по id нужный select, перед </select> вставили "<option> Project[0] </option>
+                        counter--;
+                        // console.log(document.getElementById('select_2')); // проверка 
+                    }
+                    break;
+                case '2':
+                    document.getElementById('select_2').removeAttribute('disabled');
+                    counter = event.length; 
+                    while (0 != counter){
+                        let optionLast = document.createElement('option')
+                        optionLast.setAttribute('value', event[counter-1]);
+                        optionLast.innerHTML = event[counter-1]; 
+                        select_2.append(optionLast);
+                        counter--;
+                    }
+            }
+            //     counter = selected_type_of_meeting.length; // счётчик для количества 
         });
 
 
@@ -81,5 +109,4 @@
 
     </script>
 </body>
-
 </html>
