@@ -12,8 +12,8 @@
     <div class="background">
         <div class="container">
             <div class="form"> 
-                <form  action="#" method="post" id="type">
-                    <select tabindex="1" name="type_of_meeting">
+                <form  action="" method="post" id="type">
+                    <select class="s" tabindex="1" name="type_of_meeting">
                         <option value="" selected disabled hidden>Тип встречи </option>
                         <option value="1"> Встреча по проекту </option>
                         <option value="2"> Встреча по мероприятию </option>
@@ -22,12 +22,12 @@
                     </select>
                     <br />
                     <br />
-                    <select tabindex="2" name="more_detailes">
+                    <select id="select_2" disabled tabindex="2" name="more_detailes">
                         <option value="" selected disabled hidden> Проект/мероприятие/встреча </option>
-                        <option value="1"> Тест </option>
-                        <option value="2"> Тест 2 </option>
-                        <option value="3"> Тест 3 </option>
-                        <option value="4"> Тест 4 </option>
+                        <option value="5"> Тест </option>
+                        <option value="6"> Тест 2 </option>
+                        <option value="7"> Тест 3 </option>
+                        <option value="8"> Тест 4 </option>
                     </select>
                     <div class="button_block">
                         <button tabindex="3" type="submit"> Отправить </button>
@@ -38,6 +38,48 @@
         </div>
     </div>
     
+    <script>
+        const select_click = document.querySelector('select'); // нашли весь select
+        select_click.addEventListener('change', () => { // eсли кто-то выбрал option,то
+            let select_type = select_click.value; //  запиши его value в select_type
+            if (select_type === '1') { // если value == 1, то
+                document.getElementById('select_2').removeAttribute('disabled'); // включи второй select, т.е. удали атрибут disabled
+                
+                let projects = ["project_1", "project_2",]; // список всех проектов
+                console.log(projects.length);
+                
+                let optionLast = document.createElement('option'); // вписать в html второго select новый <option></..>
+                optionLast.innerHTML = projects[0]; // внутри нового option написать название проекта из массива проектов
+                select_2.append(optionLast); // нашли по id
+
+
+            }
+
+        });
+
+
+
+        
+        // проверка на клик
+        // select_click.addEventListener('click', function() {  // ('что слушать' , 'call back')
+        //     //console.log('click')
+        // })
+
+
+
+        // const value_1 = document.getElementById('#1');
+        // console.log(value_1);
+
+        // s1.onclick = function {
+        //     console.log('Loter');
+        // }
+
+        // document.querySelector('.b').addEventListener('click', () => {
+        //     let data = document.querySelector('.s').value;
+        //     document.querySelector('.out').innerHTML = data;
+        // });
+
+    </script>
 </body>
 
 </html>
